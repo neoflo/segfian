@@ -2,50 +2,114 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
     <title>OCS Asesores</title>
+  </head>
+  <body>
     <style>
-      body,
-      html {
+      /* Make the particles container cover the viewport */
+      html,
+      body {
         height: 100%;
         margin: 0;
-        padding: 0;
-        overflow: hidden; /* Prevents scrollbars if video doesn't fit perfectly */
       }
-
-      #background-video {
-        position: fixed; /* Fixes the video to the viewport */
+      #particles-js {
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Ensures the video covers the entire background without distortion */
-        z-index: -1; /* Places it behind other content */
+        z-index: 0; /* particles behind content */
+        background: #f1f1f1; /* fallback background */
       }
-
-      /* Optional: Add overlay content */
       .content {
         position: relative;
-        z-index: 5;
-        color: white;
+        z-index: 5; /* above particles */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(66, 22, 22);
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial;
         text-align: center;
-        padding: 20px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 4em;
-        color: rgb(25, 142, 231);
+        font-size: 1.3rem;
+      }
+      .card {
+        background: rgba(217, 217, 217, 0.45);
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
       }
     </style>
-  </head>
-  <body>
-    <video id="background-video" autoplay loop muted
-      <source src="12354535_1920_1080_30fps.mp4" type="video/mp4"/>
-      Your browser does not support the video tag.
-    </video>
 
-    <!-- Optional: Add some content on top -->
+    <div id="particles-js"></div>
+
     <div class="content">
-      <h1>OCS Asesores</h1>
-      <p>Especialistas en Seguros y Fianzas</p>
+      <div class="card">
+        <h1>OCS Asesores 2025</h1>
+        <p style="opacity: 0.8">Seguros y Fianzas en San Luis Potosí</p>
+      </div>
     </div>
+
+    <!-- Inline initialization for particles.js using the CDN script above -->
+    <script>
+      /* particlesJS takes an element id and a configuration object.
+         This config is a common starter preset (dots + lines).
+         You can customize the numbers, colors, and behaviors below. */
+      if (window.particlesJS) {
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#989898' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.6, random: false },
+            size: { value: 5, random: true },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: '#c1c1c1',
+              opacity: 0.6,
+              width: 1,
+            },
+            move: {
+              enable: true,
+              speed: 6,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'out',
+            },
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+              resize: true,
+            },
+            modes: {
+              grab: { distance: 200, line_linked: { opacity: 0.5 } },
+              bubble: { distance: 200, size: 8, duration: 2, opacity: 0.8 },
+              repulse: { distance: 100 },
+              push: { particles_nb: 4 },
+              remove: { particles_nb: 2 },
+            },
+          },
+          retina_detect: true,
+        });
+      } else {
+        console.warn('particlesJS is not loaded. Check the CDN script.');
+      }
+    </script>
+    <!--
+      Quick testing notes:
+      - Open this file directly in your browser (double-click) to view the particles background.
+      - If you see a blank page, check the browser console for the warning above.
+      - To customize particles, edit the object passed to particlesJS(...) above.
+      - Optional: serve the folder with a static server (e.g., `npx serve .`) if you prefer.
+    -->
   </body>
 </html>
